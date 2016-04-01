@@ -13,6 +13,7 @@ public class Troops // battle unit
 	
 	// 구성 병과 병사수
 	private int cavarlryman;	// 기병
+	private int infantryman;	// 보병
 	private int spearman;		// 창병
 	private int bowman;			// 활병
 	
