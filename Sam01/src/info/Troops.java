@@ -22,6 +22,8 @@ public class Troops // battle unit
 	private int defense;		// 방어력
 	private int morale;			// 사기
 	private int confusionRate;		// 혼란비율(%)
+								// 수행능력(역량)
+	
 
 	private int landform;	// 지형
 	
