@@ -1,4 +1,5 @@
-import cmn.Grade;
+import cmn.GradeExtra;
+import cmn.GradeMain;
 import cmn.GradeManager;
 import info.General;
 import info.Troops;
@@ -25,24 +26,24 @@ public class test {
 		BattleManager battleManager = new BattleManager();
 		
 		General g1 = new General();
-		g1.setBattleMain(Grade.M_SS);
-		g1.setBattleExtra(Grade.M_N);
-		g1.setLeadership(Grade.M_S);
-		g1.setTacticsMain(Grade.M_B);
+		g1.setBattleMain(GradeMain.SS);
+		g1.setBattleExtra(GradeExtra.N);
+		g1.setLeadershipMain(GradeMain.S);
+		g1.setTacticsMain(GradeMain.B);
 		
 		General g2 = new General();
-		g2.setBattleMain(Grade.M_A);
-		g2.setBattleExtra(Grade.M_N);
-		g2.setLeadership(Grade.M_A);
-		g2.setTacticsMain(Grade.M_B);
+		g2.setBattleMain(GradeMain.A);
+		g2.setBattleExtra(GradeExtra.N);
+		g2.setLeadershipMain(GradeMain.A);
+		g2.setTacticsMain(GradeMain.B);
 		
 		Troops t1 = new Troops();
 		t1.setCommander(g1);
-		t1.setCavarlryman(1000);
+		t1.setCavalryman(1000);
 		
 		Troops t2 = new Troops();
 		t2.setCommander(g2);
-		t2.setCavarlryman(2000);
+		t2.setCavalryman(2000);
 		
 		for(int i=0;i < 10;i++)
 		{
@@ -56,20 +57,20 @@ public class test {
 		General g1 = new General();
 		GradeManager gradeMgr = new GradeManager();
 		
-//		g1.setBattleMain(Grade.M_SSS);
-//		g1.setBattleExtra(Grade.E_N);
+//		g1.setBattleMain(Grade.SSS);
+//		g1.setBattleExtra(Grade.N);
 //		gradeMgr.checkAvgPower(g1, 300);
 //		
-//		g1.setBattleMain(Grade.M_SSS);
-//		g1.setBattleExtra(Grade.E_P);
+//		g1.setBattleMain(Grade.SSS);
+//		g1.setBattleExtra(Grade.P);
 //		gradeMgr.checkAvgPower(g1, 300);
 //		
-//		g1.setBattleMain(Grade.M_SSS);
-//		g1.setBattleExtra(Grade.E_PP);
+//		g1.setBattleMain(Grade.SSS);
+//		g1.setBattleExtra(Grade.PP);
 //		gradeMgr.checkAvgPower(g1, 300);
 		
-		g1.setBattleMain(Grade.M_S);
-		g1.setBattleExtra(Grade.E_P); 
+		g1.setBattleMain(GradeMain.S);
+		g1.setBattleExtra(GradeExtra.P); 
 		gradeMgr.checkAvgPower(g1, 500);
 	}
 }

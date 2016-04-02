@@ -12,7 +12,7 @@ public class Troops // battle unit
 	private List<General> adjutantList; // 부관목록
 	
 	// 구성 병과 병사수
-	private int cavarlryman;	// 기병
+	private int cavalryman;		// 기병
 	private int infantryman;	// 보병
 	private int spearman;		// 창병
 	private int bowman;			// 활병
@@ -21,9 +21,10 @@ public class Troops // battle unit
 	private int speed;			// 속도
 	private int battle;			// 전투력
 	private int defense;		// 방어력
-	private int morale;			// 사기
-	private int confusionRate;		// 혼란비율(%)
-								// 수행능력(역량)
+	private int morale;			// 사기(%)
+	private int confusion;		// 혼란(%)
+	private int fatigability;	// 피로도(%)
+	private int capacity;		// 부대 전력,수행능력(역량)
 	
 
 	private int landform;	// 지형
@@ -34,7 +35,7 @@ public class Troops // battle unit
 		adviser = null;
 		adjutantList = null;
 		
-		cavarlryman = 0;
+		cavalryman = 0;
 		spearman = 0;
 		bowman = 0;
 		
@@ -42,22 +43,22 @@ public class Troops // battle unit
 		battle = 0;
 		defense = 0;
 		morale = 0;
-		confusionRate = 0;
+		confusion = 0;
 	}
 	
 	public void beAttacked(int enermyBattlePower)
 	{
 		int killedTtoop = (int)Math.round((double)enermyBattlePower/10000);
 		
-		cavarlryman = cavarlryman - killedTtoop;
+		cavalryman = cavalryman - killedTtoop;
 	}
 	
-	public void addConfusionRate(Troops enemyTroops)
+	public void addConfusion(Troops enemyTroops)
 	{
 		// todo 참모의 전술력으로 혼란도 비율 감쇄
 		
-		int enemyCommanderBattlePower = GradeManager.getPowerValue(enemyTroops.getCommander());
-		int commanderBattlePower = GradeManager.getPowerValue(this.getCommander());
+		int enemyCommanderBattlePower = GradeManager.getPower(enemyTroops.getCommander());
+		int commanderBattlePower = GradeManager.getPower(this.getCommander());
 		
 		// 부대장 전투력 비교 및 혼란도 적용
 		// 부대장 전투력 비교 후 그 비율만큼 전투력이 적은 부대의 혼란도 증가
@@ -71,10 +72,10 @@ public class Troops // battle unit
 		
 		// todo 혼란도는 최대값 까지만 증가(최대값은 통솔력으로 결정)
 		
-		if ((confusionRate+addRate) > 50)
-			confusionRate = 50;
+		if ((confusion+addRate) > 50)
+			confusion = 50;
 		else
-			confusionRate = confusionRate + addRate;
+			confusion = confusion + addRate;
 		
 		return;
 	}
@@ -96,7 +97,7 @@ public class Troops // battle unit
 		// 기타 이동에 따른 다른 상황 진행
 	}
 	
-	public int getCavarlyPower()
+	public int getCavalyPower()
 	{
 		// 장수 전투력, 가용 병사수, 사기
 		// 전투참여 병사수 : 혼란도 만큼 제외
@@ -115,8 +116,8 @@ public class Troops // battle unit
 		
 		
 		int power = 0;
-		int possibleCavarlryman = cavarlryman - (int)Math.round((double)cavarlryman*confusionRate/100);
-		power = possibleCavarlryman * GradeManager.getPowerValue(commander);
+		int possibleCavalryman = cavalryman - (int)Math.round((double)cavalryman*confusion/100);
+		power = possibleCavalryman * GradeManager.getPower(commander);
 
 		return power;
 	}
@@ -137,12 +138,12 @@ public class Troops // battle unit
 		this.adviser = adviser;
 	}
 
-	public int getCavarlryman() {
-		return cavarlryman;
+	public int getCavalryman() {
+		return cavalryman;
 	}
 
-	public void setCavarlryman(int cavarlryman) {
-		this.cavarlryman = cavarlryman;
+	public void setCavalryman(int cavalryman) {
+		this.cavalryman = cavalryman;
 	}
 
 	public int getSpearman() {
@@ -161,11 +162,11 @@ public class Troops // battle unit
 		this.bowman = bowman;
 	}
 	
-	public int getConfusionRate() {
-		return confusionRate;
+	public int getConfusion() {
+		return confusion;
 	}
 
-	public void setConfusionRate(int confusionRate) {
-		this.confusionRate = confusionRate;
+	public void setConfusion(int confusion) {
+		this.confusion = confusion;
 	}
 }

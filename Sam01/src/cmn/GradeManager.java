@@ -6,57 +6,57 @@ public class GradeManager {
 	
 	public static int getBasePower(General general)
 	{
-		Grade grade = general.getBattleMain();
+		GradeMain gradeMain = general.getBattleMain();
 		int basePower = 0;
 		
-		switch(grade)
+		switch(gradeMain)
 		{
-			case M_SSS:
+			case SSS:
 				basePower = 970;
 				break;
-			case M_SS:
+			case SS:
 				basePower = 940;
 				break;
-			case M_S:
+			case S:
 				basePower = 900;
 				break;
-			case M_AAA:
+			case AAA:
 				basePower = 870;
 				break;
-			case M_AA:
+			case AA:
 				basePower = 840;
 				break;
-			case M_A:
+			case A:
 				basePower = 800;
 				break;
-			case M_BBB:
+			case BBB:
 				basePower = 770;
 				break;
-			case M_BB:
+			case BB:
 				basePower = 740;
 				break;
-			case M_B:
+			case B:
 				basePower = 700;
 				break;
-			case M_CCC:
+			case CCC:
 				basePower = 670;
 				break;
-			case M_CC:
+			case CC:
 				basePower = 640;
 				break;
-			case M_C:
+			case C:
 				basePower = 600;
 				break;
-			case M_DDD:
+			case DDD:
 				basePower = 570;
 				break;
-			case M_DD:
+			case DD:
 				basePower = 540;
 				break;
-			case M_D:
+			case D:
 				basePower = 500;
 				break;
-			case M_N:
+			case N:
 				basePower = 0;
 				break;
 			default:
@@ -73,44 +73,44 @@ public class GradeManager {
 		int randomMin = 0;
 		int randomMax = 0;
 		
-		Grade grade = general.getBattleExtra();
+		GradeExtra gradeExtra = general.getBattleExtra();
 		int randomTry = 0;
-		switch(grade)
+		switch(gradeExtra)
 		{
-			case E_PPP:
+			case PPP:
 				randomTry = 3;
 				randomMin = 0;
 				randomMax = 40;
 				break;
-			case E_PP:
+			case PP:
 				randomTry = 2;
 				randomMin = 0;
 				randomMax = 30;
 				break;
-			case E_P:
+			case P:
 				randomTry = 1;
 				randomMin = 0;
 				randomMax = 20;
 				break;
-			case E_MMM:
+			case MMM:
 				randomTry = 3;
 				randomMin = 0;
 				randomMax = 40;
 				minusFlag = true;
 				break;
-			case E_MM:
+			case MM:
 				randomTry = 2;
 				randomMin = 0;
 				randomMax = 30;
 				minusFlag = true;
 				break;
-			case E_M:
+			case M:
 				randomTry = 1;
 				randomMin = 0;
 				randomMax = 20;
 				minusFlag = true;
 				break;
-			case E_N:
+			case N:
 				randomTry = 0;
 				break;
 			default:
@@ -137,7 +137,7 @@ public class GradeManager {
 		return extraPower;
 	}
 	
-	public static int getPowerValue(General general)
+	public static int getPower(General general)
 	{
 		// 주등급 파워
 		int basePower = getBasePower(general); // 등급별 기본 파워
@@ -176,7 +176,7 @@ public class GradeManager {
 		int power = 0;
 		for (int i=0;i < count;i++)
 		{
-			power = getPowerValue(general);
+			power = getPower(general);
 			System.out.println(power);
 			
 			total += power;
