@@ -3,6 +3,7 @@ package info;
 import java.util.List;
 
 import cmn.GradeManager;
+import cmn.TroopsType;
 
 public class Troops // battle unit 
 {
@@ -12,10 +13,10 @@ public class Troops // battle unit
 	private List<General> adjutantList; // 부관목록
 	
 	// 구성 병과 병사수
-	private int cavalryman;		// 기병
-	private int infantryman;	// 보병
-	private int spearman;		// 창병
-	private int bowman;			// 활병
+	private int cavalrymen;		// 기병
+	private int infantrymen;	// 보병
+	private int spearmen;		// 창병
+	private int bowmen;			// 활병
 	
 	// 부대 속성
 	private int speed;			// 속도
@@ -35,9 +36,9 @@ public class Troops // battle unit
 		adviser = null;
 		adjutantList = null;
 		
-		cavalryman = 0;
-		spearman = 0;
-		bowman = 0;
+		cavalrymen = 0;
+		spearmen = 0;
+		bowmen = 0;
 		
 		speed = 0;
 		battle = 0;
@@ -50,7 +51,7 @@ public class Troops // battle unit
 	{
 		int killedTtoop = (int)Math.round((double)enermyBattlePower/10000);
 		
-		cavalryman = cavalryman - killedTtoop;
+		cavalrymen = cavalrymen - killedTtoop;
 	}
 	
 	public void addConfusion(Troops enemyTroops)
@@ -97,6 +98,36 @@ public class Troops // battle unit
 		// 기타 이동에 따른 다른 상황 진행
 	}
 	
+	// 전투 가능 병사수
+	public int getMenNumberCanBattle(TroopsType troopsType)
+	{
+		int menNumber = 0;
+		
+		switch(troopsType)
+		{
+			case BOW:
+				menNumber = bowmen;
+				break;
+			case CAVALY:
+				menNumber = cavalrymen;
+				break;
+			case INFANTRY:
+				menNumber = infantrymen;
+				break;
+			default:
+				menNumber = 0;
+				break;
+		}
+		
+		// todo : 통솔력을 오버하는 병력수 제외
+		
+		// 혼란도에 비례해서 병사수 감소
+		menNumber = menNumber - (int)Math.round((double)menNumber*confusion/100);
+		
+		return menNumber;
+	}
+	
+	// 전투력 
 	public int getCavalyPower()
 	{
 		// 장수 전투력, 가용 병사수, 사기
@@ -114,10 +145,21 @@ public class Troops // battle unit
 		//	- 병과별로 영향받는 지형이 다름
 		// 전술 차이이 따라 전투력 이 최하로 나올수 있음
 		
+		//-----------------------------------------
+		
+		// 전투 가능 병사수
+		int cavalrymen = getMenNumberCanBattle(TroopsType.CAVALY);
+		
+		// 부대 기본전투력:병력수*병과전투력
+		
+		// 사기 적용:장수 전투력 차이에 비례
+		// 피로도
+		// 지형
+		// 장수 전투력 
 		
 		int power = 0;
-		int possibleCavalryman = cavalryman - (int)Math.round((double)cavalryman*confusion/100);
-		power = possibleCavalryman * GradeManager.getPower(commander);
+		
+		power = cavalrymen * GradeManager.getPower(commander);
 
 		return power;
 	}
@@ -138,28 +180,28 @@ public class Troops // battle unit
 		this.adviser = adviser;
 	}
 
-	public int getCavalryman() {
-		return cavalryman;
+	public int getCavalrymen() {
+		return cavalrymen;
 	}
 
-	public void setCavalryman(int cavalryman) {
-		this.cavalryman = cavalryman;
+	public void setCavalrymen(int cavalrymen) {
+		this.cavalrymen = cavalrymen;
 	}
 
-	public int getSpearman() {
-		return spearman;
+	public int getSpearmen() {
+		return spearmen;
 	}
 
-	public void setSpearman(int spearman) {
-		this.spearman = spearman;
+	public void setSpearmen(int spearmen) {
+		this.spearmen = spearmen;
 	}
 
-	public int getBowman() {
-		return bowman;
+	public int getBowmen() {
+		return bowmen;
 	}
 
-	public void setBowman(int bowman) {
-		this.bowman = bowman;
+	public void setBowmen(int bowmen) {
+		this.bowmen = bowmen;
 	}
 	
 	public int getConfusion() {

@@ -39,11 +39,11 @@ public class test {
 		
 		Troops t1 = new Troops();
 		t1.setCommander(g1);
-		t1.setCavalryman(1000);
+		t1.setCavalrymen(1000);
 		
 		Troops t2 = new Troops();
 		t2.setCommander(g2);
-		t2.setCavalryman(2000);
+		t2.setCavalrymen(2000);
 		
 		for(int i=0;i < 10;i++)
 		{
