@@ -11,7 +11,7 @@ public class test {
 		
 //		BattleManager battleMgr = new BattleManager();
 //		battleMgr.battle(t1, t2);
-		
+		// ....
 		//testGrade();
 		
 		testBattle();
