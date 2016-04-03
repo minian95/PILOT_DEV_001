@@ -1,0 +1,100 @@
+province : (행정 구역으로서의) 도(道), 주(州), 성(省)
+strategy : 전략, 전술, 책략, 계략; [가산] (신중한) 계획, 방책.
+ruler : 군주
+trust : 신임도
+governor : 태수
+advisor : 군사
+population	: 인구
+men : 병사
+general : 현역장수
+free general : 재야장수
+gold : 군자금
+food : 군량
+rate : 시세
+horses : 군마
+loyalty : 민충성도, 민심
+land : 토지
+flood : 치수도
+
+< 명령 >
+rest : 대기
+move : 이동
+send : 수송
+war : 전쟁
+milit : 군사, 군대, 부대
+person : 인사
+diplom(diplomacy) : 외교
+spy : 계략
+view  : 정보
+cultiv(cultivation) : 경작,개발
+flood : 치수
+reward : 포상
+give : 선정
+merch(merchant	) : 상인, 무역
+tax : 징수
+deleg (delegacy	) : 위임 
+map : 지도
+exile : 방랑
+advice : 조언
+hire : 징병
+reassign : 재편성
+train : 훈련
+recruit : 등용
+search : 수색
+appoint : 임명
+dismiss : 해임
+alliance : 동맹 체결
+joint invasion : 공동 공격(작전)
+cancel aliiance : 동맹 파기
+threaten : 항복권고
+other provinces : 타국 정보
+summary : 일람
+territory : 속령
+
+
+< 기타 >
+invade
+생산력
+거점
+수도
+내정관
+외교관
+세력
+세율
+자금
+기동력,이동력
+공격력
+공격반경,공격범위
+병과
+방어력
+지형 : 숲 , 성, 
+내구력
+궁기병
+중보병
+가산치
+관직 : 무관, 문관
+지휘
+부대 체력
+기력
+피로
+배치
+유지비용
+운용
+피로도
+부대 전력
+내구력
+종합전력
+행동력
+출진
+
+
+< 병과 >
+창병 : 보병에 강, 기병에 덜당함, 기병보다 유지비 쌈
+궁병
+강궁병
+궁기병
+공성병기
+
+
+
+
