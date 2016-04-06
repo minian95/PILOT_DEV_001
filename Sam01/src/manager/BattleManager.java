@@ -5,9 +5,6 @@ import info.Troops;
 public class BattleManager 
 {
 	static int baseBattleRate = 1;
-	public static int CAVALY_MEN_POWER = 10;
-	public static int INFANTRY_MEN_POWER = 2;
-	public static int BOW_MEN_POWER = 1;
 	
 	public void battle(Troops t1, Troops t2)
 	{
@@ -18,20 +15,21 @@ public class BattleManager
 		// 야전에서 보병 궁병은 기병에 혼란도 크게 증가
 		// 기병 유지비 많이 듬
 		// 전투 우선순서 : 기병-기병, 기병-보병, 기병-궁병, 보병-궁병 
-		t1.getCavalyPower();
 		
-		// 혼란도 적용  => 변경 전투력 비교에 따른 전투참여율적용
-		t1.addConfusion(t2);
-		t2.addConfusion(t1);
+		// 혼란도 적용
+		t1.applyConfusion(t2);
+		t2.applyConfusion(t1);
+		
+		// 사기 적용
 		
 		//System.out.println("t1:" + t1.getConfusionRate() + ", t2:" + t2.getConfusionRate());
 				
-		int t1_BattlePower = t1.getCavalyPower();
-		int t2_BattlePower = t2.getCavalyPower();
+		int t1_cavalyPower = t1.getCavalyPower(t2);
+		int t2_cavalyPower = t2.getCavalyPower(t1);
 		
-		t1.beAttacked(t2_BattlePower);
-		t2.beAttacked(t1_BattlePower);
+		t1.beAttacked(t2_cavalyPower);
+		t2.beAttacked(t1_cavalyPower);
 		
-		System.out.println("t1_p:"+t1_BattlePower+", t1_m:"+t1.getCavalrymen()+", t2_p:"+t2_BattlePower+", t2_m:"+t2.getCavalrymen());
+		System.out.println("t1_p:"+t1_cavalyPower+", t1_m:"+t1.getCavalrymen()+", t2_p:"+t2_cavalyPower+", t2_m:"+t2.getCavalrymen());
 	}
 }

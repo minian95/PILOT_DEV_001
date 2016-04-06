@@ -7,6 +7,13 @@ import cmn.TroopsType;
 
 public class Troops // battle unit 
 {
+	// 병과별 병사당 기본 전투력
+	public static int CAVALY_MEN_POWER = 10;
+	public static int INFANTRY_MEN_POWER = 2;
+	public static int BOW_MEN_POWER = 1;
+	
+	public static int DEATH_PER_POWER = 500; // 공격력당 사망비율
+	
 	// 부대 구성 장수
 	private General commander; // 부대장
 	private General adviser; // 참모
@@ -49,12 +56,12 @@ public class Troops // battle unit
 	
 	public void beAttacked(int enermyBattlePower)
 	{
-		int killedTtoop = (int)Math.round((double)enermyBattlePower/10000);
+		int DeathMen = (int)Math.round((double)enermyBattlePower/DEATH_PER_POWER);
 		
-		cavalrymen = cavalrymen - killedTtoop;
+		cavalrymen = cavalrymen - DeathMen;
 	}
 	
-	public void addConfusion(Troops enemyTroops)
+	public void applyConfusion(Troops enemyTroops)
 	{
 		// todo 참모의 전술력으로 혼란도 비율 감쇄
 		
@@ -71,12 +78,18 @@ public class Troops // battle unit
 			//		+", addRate:"+addRate);
 		}
 		
-		// todo 혼란도는 최대값 까지만 증가(최대값은 통솔력으로 결정)
+//		if (addRate == 0)
+//		{
+//			addRate = 1;	// 추가 혼란도가 0 이면 기본값 적용
+//		}
 		
+		// todo 혼란도는 최대값 까지만 증가(최대값은 통솔력으로 결정)
 		if ((confusion+addRate) > 50)
 			confusion = 50;
 		else
 			confusion = confusion + addRate;
+		
+		//System.out.println(commander.getName() + " : con=" + confusion); 
 		
 		return;
 	}
@@ -128,7 +141,7 @@ public class Troops // battle unit
 	}
 	
 	// 전투력 
-	public int getCavalyPower()
+	public int getCavalyPower(Troops enemyTroops)
 	{
 		// 장수 전투력, 가용 병사수, 사기
 		// 전투참여 병사수 : 혼란도 만큼 제외
@@ -150,18 +163,40 @@ public class Troops // battle unit
 		// 전투 가능 병사수
 		int cavalrymen = getMenNumberCanBattle(TroopsType.CAVALY);
 		
-		// 부대 기본전투력:병력수*병과전투력
+		// 부대 기본전투력:병력수*병과기본전투력
+		int troopsBasePower = cavalrymen*CAVALY_MEN_POWER;
 		
-		// 사기 적용:장수 전투력 차이에 비례
+		// 사기 적용
+		
 		// 피로도
 		// 지형
 		// 장수 전투력 
 		
-		int power = 0;
+		int generalPower = GradeManager.getPower(commander);
+		int enemyGeneralPower = GradeManager.getPower(enemyTroops.getCommander());
 		
-		power = cavalrymen * GradeManager.getPower(commander);
+		int totalPower = troopsBasePower + generalPower;
+		
+		// 장수 전투력 차이 적용
+		double temp = 0;
+		if (generalPower > enemyGeneralPower)
+		{
+			temp = (1 - (double)enemyGeneralPower/generalPower);
+		}
+		else
+		{
+			temp = -(1 - (double)generalPower/enemyGeneralPower);
+		}
+		
+		// todo 등급별 차이를 적용해야함, 등급이 다른경우 차이값 더 줌
+		// 등급 기본값 다시 정리 D급 100 -300 
+		
+		
+		totalPower = totalPower + (int)(totalPower*temp);
+		//System.out.println("temp:" + temp + ", totalPower:" + totalPower + ", totalPower2:" + totalPower*temp);
+		//System.out.println("cavalrymen:" + cavalrymen + ", troopsBasePower:" + troopsBasePower +", generalPower:" + generalPower);
 
-		return power;
+		return totalPower;
 	}
 	
 	public General getCommander() {
