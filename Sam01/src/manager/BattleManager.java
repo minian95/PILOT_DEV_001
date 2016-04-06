@@ -17,8 +17,8 @@ public class BattleManager
 		// 전투 우선순서 : 기병-기병, 기병-보병, 기병-궁병, 보병-궁병 
 		
 		// 혼란도 적용
-		t1.applyConfusion(t2);
-		t2.applyConfusion(t1);
+		//t1.applyConfusion(t2);
+		//t2.applyConfusion(t1);
 		
 		// 사기 적용
 		

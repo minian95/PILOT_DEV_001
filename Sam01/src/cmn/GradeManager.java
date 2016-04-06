@@ -12,49 +12,49 @@ public class GradeManager {
 		switch(gradeMain)
 		{
 			case SSS:
-				basePower = 970;
+				basePower = 7000;
 				break;
 			case SS:
-				basePower = 940;
+				basePower = 6000;
 				break;
 			case S:
-				basePower = 900;
+				basePower = 5000;
 				break;
 			case AAA:
-				basePower = 870;
+				basePower = 4000;
 				break;
 			case AA:
-				basePower = 840;
+				basePower = 3000;
 				break;
 			case A:
-				basePower = 800;
+				basePower = 2000;
 				break;
 			case BBB:
-				basePower = 770;
+				basePower = 1000;
 				break;
 			case BB:
-				basePower = 740;
-				break;
-			case B:
 				basePower = 700;
 				break;
+			case B:
+				basePower = 500;
+				break;
 			case CCC:
-				basePower = 670;
+				basePower = 400;
 				break;
 			case CC:
-				basePower = 640;
+				basePower = 300;
 				break;
 			case C:
-				basePower = 600;
+				basePower = 200;
 				break;
 			case DDD:
-				basePower = 570;
+				basePower = 150;
 				break;
 			case DD:
-				basePower = 540;
+				basePower = 100;
 				break;
 			case D:
-				basePower = 500;
+				basePower = 50;
 				break;
 			case N:
 				basePower = 0;
@@ -161,6 +161,9 @@ public class GradeManager {
 			// 추가값이 '-'값인 경우, 0 으로 설정 
 			addPower = 0;
 		}
+		
+		basePowerBy10 = 0;
+		addPower = 0;
 		
 		return (basePower-basePowerBy10) + addPower;
 	}

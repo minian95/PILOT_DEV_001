@@ -27,14 +27,14 @@ public class test {
 		
 		General g1 = new General();
 		g1.setName("G1");
-		g1.setBattleMain(GradeMain.SSS);
+		g1.setBattleMain(GradeMain.SS);
 		g1.setBattleExtra(GradeExtra.N);
 		g1.setLeadershipMain(GradeMain.S);
 		g1.setTacticsMain(GradeMain.B);
 		
 		General g2 = new General();
 		g2.setName("G2");
-		g2.setBattleMain(GradeMain.C);
+		g2.setBattleMain(GradeMain.D);
 		g2.setBattleExtra(GradeExtra.N);
 		g2.setLeadershipMain(GradeMain.A);
 		g2.setTacticsMain(GradeMain.B);
