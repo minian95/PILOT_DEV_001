@@ -8,6 +8,7 @@ import cmn.TroopsType;
 public class Troops // battle unit 
 {
 	// 병과별 병사당 기본 전투력
+	// todo : 병과별 상대 공격력 , 방어력 구성 
 	public static int CAVALY_MEN_POWER = 10;
 	public static int INFANTRY_MEN_POWER = 2;
 	public static int BOW_MEN_POWER = 1;
