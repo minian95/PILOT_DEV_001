@@ -33,7 +33,6 @@ public class Troops // battle unit
 	private int confusion;		// 혼란(%)
 	private int fatigability;	// 피로도(%), 행동력
 	private int capacity;		// 부대 전력,수행능력(역량)
-	
 
 	private int landform;	// 지형
 	
