@@ -4,6 +4,11 @@ import info.General;
 
 public class GradeManager {
 	
+	// todo : 등급 별로 기준 값 주고 거기서 랜덤값 가감
+	// 랜덤값 범위는 등급에 따라 다르게
+	// 병과 클래스 구성, 공격력,방어력,혼란도, 전투불능(도망, 부상등) 
+	// 전투불능은 전투종료후에 통솔력에 따라 회복
+	
 	public static int getBasePower(General general)
 	{
 		GradeMain gradeMain = general.getBattleMain();
@@ -12,49 +17,49 @@ public class GradeManager {
 		switch(gradeMain)
 		{
 			case SSS:
-				basePower = 7000;
+				basePower = 9000;
 				break;
 			case SS:
-				basePower = 6000;
+				basePower = 8000;
 				break;
 			case S:
-				basePower = 5000;
+				basePower = 7000;
 				break;
 			case AAA:
-				basePower = 4000;
+				basePower = 5000;
 				break;
 			case AA:
-				basePower = 3000;
+				basePower = 4000;
 				break;
 			case A:
-				basePower = 2000;
+				basePower = 3000;
 				break;
 			case BBB:
-				basePower = 1000;
+				basePower = 2000;
 				break;
 			case BB:
-				basePower = 700;
+				basePower = 1500;
 				break;
 			case B:
-				basePower = 500;
+				basePower = 1000;
 				break;
 			case CCC:
-				basePower = 400;
+				basePower = 700;
 				break;
 			case CC:
-				basePower = 300;
+				basePower = 600;
 				break;
 			case C:
-				basePower = 200;
+				basePower = 500;
 				break;
 			case DDD:
-				basePower = 150;
+				basePower = 300;
 				break;
 			case DD:
-				basePower = 100;
+				basePower = 200;
 				break;
 			case D:
-				basePower = 50;
+				basePower = 100;
 				break;
 			case N:
 				basePower = 0;
@@ -139,34 +144,36 @@ public class GradeManager {
 	
 	public static int getPower(General general)
 	{
-		// 주등급 파워
-		int basePower = getBasePower(general); // 등급별 기본 파워
-		int basePowerBy10 = basePower/10%10*10;	// 기본파워 10단위값 시작값
-		int randomPower = randomRange(basePowerBy10, 100); // 랜덤 추가 파워, 10단위 시작값 - 100 사이 랜덤값
-		
-		// 부등급 파워
-		int extraPower = getExtraPower(general);
-		
-		// 최종 추가합산
-		int addPower = randomPower + extraPower;
-		//System.out.println("b:"+basePower+", by:"+basePowerBy10+", r:"+randomPower+", e:"+extraPower);
-
-		if (addPower > 100)
-		{
-			// 추가값이 현재 등급을 초과할 경우, 현등급 max값으로 설정 
-			addPower = 100;
-		}
-		else if(addPower < 0)
-		{
-			// 추가값이 '-'값인 경우, 0 으로 설정 
-			addPower = 0;
-		}
-		
-		basePowerBy10 = 0;
-		addPower = 0;
-		
-		return (basePower-basePowerBy10) + addPower;
+		return getBasePower(general); // 등급별 기본 파워
 	}
+	
+//	public static int getPower(General general)
+//	{
+//		// 주등급 파워
+//		int basePower = getBasePower(general); // 등급별 기본 파워
+//		int basePowerBy10 = basePower/10%10*10;	// 기본파워 10단위값 시작값
+//		int randomPower = randomRange(basePowerBy10, 100); // 랜덤 추가 파워, 10단위 시작값 - 100 사이 랜덤값
+//		
+//		// 부등급 파워
+//		int extraPower = getExtraPower(general);
+//		
+//		// 최종 추가합산
+//		int addPower = randomPower + extraPower;
+//		//System.out.println("b:"+basePower+", by:"+basePowerBy10+", r:"+randomPower+", e:"+extraPower);
+//
+//		if (addPower > 100)
+//		{
+//			// 추가값이 현재 등급을 초과할 경우, 현등급 max값으로 설정 
+//			addPower = 100;
+//		}
+//		else if(addPower < 0)
+//		{
+//			// 추가값이 '-'값인 경우, 0 으로 설정 
+//			addPower = 0;
+//		}
+//		
+//		return (basePower-basePowerBy10) + addPower;
+//	}
 	
 	public static int randomRange(int n1, int n2) 
 	{

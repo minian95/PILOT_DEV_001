@@ -27,7 +27,7 @@ public class test {
 		
 		General g1 = new General();
 		g1.setName("G1");
-		g1.setBattleMain(GradeMain.SS);
+		g1.setBattleMain(GradeMain.B);
 		g1.setBattleExtra(GradeExtra.N);
 		g1.setLeadershipMain(GradeMain.S);
 		g1.setTacticsMain(GradeMain.B);

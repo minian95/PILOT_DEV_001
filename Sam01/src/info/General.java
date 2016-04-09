@@ -6,9 +6,9 @@ import cmn.GradeMain;
 public class General //Character 
 {
 	private String name;			// 장수명
-	private GradeMain battleMain;			// 주전투등급
-	private GradeExtra battleExtra;			// 부전투등급
-	private GradeMain tacticsMain;		// 주전술등급
+	private GradeMain battleMain;			// 주전투등급 powerAttack
+	private GradeExtra battleExtra;			// 부전투등급 
+	private GradeMain tacticsMain;		// 주전술등급	powerTactics
 	private GradeExtra tacticsExtra;		// 부전술등급
 	private GradeMain leadershipMain;		// 주통솔등급
 	private GradeExtra leadershipExtra;		// 부통솔등급

@@ -8,7 +8,6 @@ import cmn.TroopsType;
 public class Troops // battle unit 
 {
 	// 병과별 병사당 기본 전투력
-	// todo : 병과별 상대 공격력 , 방어력 구성 
 	public static int CAVALY_MEN_POWER = 10;
 	public static int INFANTRY_MEN_POWER = 2;
 	public static int BOW_MEN_POWER = 1;
@@ -32,7 +31,7 @@ public class Troops // battle unit
 	private int defense;		// 방어력
 	private int morale;			// 사기(%)
 	private int confusion;		// 혼란(%)
-	private int fatigability;	// 피로도(%)
+	private int fatigability;	// 피로도(%), 행동력
 	private int capacity;		// 부대 전력,수행능력(역량)
 	
 
@@ -84,7 +83,6 @@ public class Troops // battle unit
 //			addRate = 1;	// 추가 혼란도가 0 이면 기본값 적용
 //		}
 		
-		// todo 혼란도는 최대값 까지만 증가(최대값은 통솔력으로 결정)
 		if ((confusion+addRate) > 50)
 			confusion = 50;
 		else
@@ -97,19 +95,12 @@ public class Troops // battle unit
 	
 	public void process() // 1틱 진행
 	{
-		// 혼란도가 통솔력에 비해 기준이하면
-		// 	- 혼란도 증가
-		// 혼란도가 통솔력에 비해 기준이상이면
-		// 	- 혼란도 감소
-		
-		// 상황에 따라 부대 이동 또는 전투
-		// 그외 상황 진행
+
 	}
 	
 	public void move()
 	{
-		// 사기는 조금씩 감소(통솔력에 따라 감소치 다름)
-		// 기타 이동에 따른 다른 상황 진행
+
 	}
 	
 	// 전투 가능 병사수
@@ -144,23 +135,6 @@ public class Troops // battle unit
 	// 전투력 
 	public int getCavalyPower(Troops enemyTroops)
 	{
-		// 장수 전투력, 가용 병사수, 사기
-		// 전투참여 병사수 : 혼란도 만큼 제외
-		// 통솔력 이상의 병사는 처음부터 제외
-		// 혼란도
-		//	- 통솔력으로 회복됨
-		//	- 최초 0, 1틱 때마다 통솔력에 반비례 증가, 최대치는 통솔력에 반비례
-		//	- 전투시 상대 부대 전술력, 전투력에 영향받음
-		//	- 성에 주둔시 다시 회복
-		// 사기
-		//	- 전투시 승리할때마다 증가하고 전투없으면 감소
-		//	- 최초 0
-		// 지형
-		//	- 병과별로 영향받는 지형이 다름
-		// 전술 차이이 따라 전투력 이 최하로 나올수 있음
-		
-		//-----------------------------------------
-		
 		// 전투 가능 병사수
 		int cavalrymen = getMenNumberCanBattle(TroopsType.CAVALY);
 		
@@ -184,14 +158,10 @@ public class Troops // battle unit
 		{
 			temp = (1 - (double)enemyGeneralPower/generalPower);
 		}
-		else
-		{
-			temp = -(1 - (double)generalPower/enemyGeneralPower);
-		}
-		
-		// todo 등급별 차이를 적용해야함, 등급이 다른경우 차이값 더 줌
-		// 등급 기본값 다시 정리 D급 100 -300 
-		
+//		else
+//		{
+//			temp = -(1 - (double)generalPower/enemyGeneralPower);
+//		}
 		
 		totalPower = totalPower + (int)(totalPower*temp);
 		//System.out.println("temp:" + temp + ", totalPower:" + totalPower + ", totalPower2:" + totalPower*temp);
